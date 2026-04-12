@@ -1,0 +1,21 @@
+name: Validate Scenarios
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate JSON files
+        run: |
+          for file in scenarios/*.json; do
+            echo "Validating $file..."
+            python3 -c "import json; json.load(open('$file'))"
+          done
+          echo "All scenario files are valid JSON"

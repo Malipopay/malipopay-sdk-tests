@@ -1,0 +1,56 @@
+[
+  {
+    "name": "create_invoice",
+    "description": "Create a new invoice",
+    "method": "POST",
+    "path": "/api/v1/invoice",
+    "headers": { "apiToken": "test-key" },
+    "request_body": {
+      "customer": "customer-id",
+      "items": [
+        { "description": "Web Development", "quantity": 1, "unitPrice": 500000 }
+      ],
+      "dueDate": "2026-05-01",
+      "currency": "TZS",
+      "taxRate": 18
+    },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true,
+      "data": {
+        "_id": "string",
+        "reference": "string",
+        "total": "number",
+        "status": "string"
+      }
+    }
+  },
+  {
+    "name": "list_invoices",
+    "description": "List all invoices",
+    "method": "GET",
+    "path": "/api/v1/invoice",
+    "headers": { "apiToken": "test-key" },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true,
+      "data": "array"
+    }
+  },
+  {
+    "name": "record_invoice_payment",
+    "description": "Record a payment against an invoice",
+    "method": "POST",
+    "path": "/api/v1/invoice/record-payment",
+    "headers": { "apiToken": "test-key" },
+    "request_body": {
+      "invoiceId": "invoice-id",
+      "amount": 500000,
+      "reference": "PAY-123"
+    },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true
+    }
+  }
+]

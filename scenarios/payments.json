@@ -1,0 +1,134 @@
+[
+  {
+    "name": "collect_mobile_money",
+    "description": "Initiate a mobile money collection",
+    "method": "POST",
+    "path": "/api/v1/payment/collection",
+    "headers": { "apiToken": "test-key" },
+    "request_body": {
+      "description": "Order #1234",
+      "amount": 10000,
+      "phoneNumber": "255712345678"
+    },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true,
+      "data": {
+        "reference": "string",
+        "amount": "number",
+        "status": "string",
+        "currency": "string"
+      }
+    }
+  },
+  {
+    "name": "disburse_funds",
+    "description": "Disburse funds to a mobile money account",
+    "method": "POST",
+    "path": "/api/v1/payment/disbursement",
+    "headers": { "apiToken": "test-key" },
+    "request_body": {
+      "description": "Salary payment",
+      "amount": 50000,
+      "phoneNumber": "255712345678"
+    },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true,
+      "data": {
+        "reference": "string",
+        "amount": "number",
+        "status": "string"
+      }
+    }
+  },
+  {
+    "name": "verify_payment",
+    "description": "Verify a payment by reference",
+    "method": "GET",
+    "path": "/api/v1/payment/verify/{reference}",
+    "path_params": { "reference": "PAY-TEST-001" },
+    "headers": { "apiToken": "test-key" },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true,
+      "data": {
+        "reference": "string",
+        "status": "string"
+      }
+    }
+  },
+  {
+    "name": "get_payment_by_reference",
+    "description": "Get a payment by its reference",
+    "method": "GET",
+    "path": "/api/v1/payment/reference/{reference}",
+    "path_params": { "reference": "PAY-TEST-001" },
+    "headers": { "apiToken": "test-key" },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true,
+      "data": {
+        "reference": "string",
+        "amount": "number"
+      }
+    }
+  },
+  {
+    "name": "list_payments",
+    "description": "List all payments",
+    "method": "GET",
+    "path": "/api/v1/payment",
+    "headers": { "apiToken": "test-key" },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true,
+      "data": "array"
+    }
+  },
+  {
+    "name": "search_payments",
+    "description": "Search payments with filters",
+    "method": "GET",
+    "path": "/api/v1/payment/search",
+    "headers": { "apiToken": "test-key" },
+    "query_params": { "status": "COMPLETED", "from": "2026-01-01" },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true,
+      "data": "array"
+    }
+  },
+  {
+    "name": "create_payment_link",
+    "description": "Create a payment link",
+    "method": "POST",
+    "path": "/api/v1/pay",
+    "headers": { "apiToken": "test-key" },
+    "request_body": {
+      "amount": 25000,
+      "phoneNumber": "255712345678"
+    },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true,
+      "data": {
+        "link": "string"
+      }
+    }
+  },
+  {
+    "name": "initiate_payment_invalid_key",
+    "description": "Initiate payment with invalid API key should return 401",
+    "method": "POST",
+    "path": "/api/v1/payment/collection",
+    "headers": { "apiToken": "invalid-key" },
+    "request_body": {
+      "description": "Test",
+      "amount": 1000,
+      "phoneNumber": "255712345678"
+    },
+    "expected_status": 401,
+    "expected_error": true
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "name": "send_single_sms",
+    "description": "Send a single SMS",
+    "method": "POST",
+    "path": "/sms/",
+    "headers": { "apiToken": "test-key" },
+    "request_body": {
+      "sender": "MALIPOPAY",
+      "phoneNumber": "255712345678",
+      "message": "Your payment was received!"
+    },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true
+    }
+  },
+  {
+    "name": "send_bulk_sms",
+    "description": "Send bulk SMS to multiple recipients",
+    "method": "POST",
+    "path": "/sms/bulk",
+    "headers": { "apiToken": "test-key" },
+    "request_body": {
+      "sender": "MALIPOPAY",
+      "phoneNumber": ["255712345678", "255713456789"],
+      "message": "Special offer!"
+    },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true
+    }
+  },
+  {
+    "name": "schedule_sms",
+    "description": "Schedule an SMS for later delivery",
+    "method": "POST",
+    "path": "/sms/schedule",
+    "headers": { "apiToken": "test-key" },
+    "request_body": {
+      "sender": "MALIPOPAY",
+      "phoneNumber": ["255712345678"],
+      "message": "Reminder: Your payment is due tomorrow",
+      "date": "2026-05-01T09:00:00Z"
+    },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true
+    }
+  }
+]

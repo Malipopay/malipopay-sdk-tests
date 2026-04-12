@@ -1,0 +1,80 @@
+[
+  {
+    "name": "create_customer",
+    "description": "Create a new customer",
+    "method": "POST",
+    "path": "/api/v1/customer",
+    "headers": { "apiToken": "test-key" },
+    "request_body": {
+      "phoneNumber": "255712345678",
+      "firstname": "John",
+      "lastname": "Doe",
+      "email": "john@example.com"
+    },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true,
+      "data": {
+        "_id": "string",
+        "phoneNumber": "string",
+        "firstname": "string",
+        "lastname": "string"
+      }
+    }
+  },
+  {
+    "name": "list_customers",
+    "description": "List all customers",
+    "method": "GET",
+    "path": "/api/v1/customer",
+    "headers": { "apiToken": "test-key" },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true,
+      "data": "array"
+    }
+  },
+  {
+    "name": "get_customer_by_id",
+    "description": "Get a customer by ID",
+    "method": "GET",
+    "path": "/api/v1/customer/{customer_id}",
+    "path_params": { "customer_id": "test-customer-id" },
+    "headers": { "apiToken": "test-key" },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true,
+      "data": {
+        "_id": "string",
+        "phoneNumber": "string"
+      }
+    }
+  },
+  {
+    "name": "search_customers",
+    "description": "Search customers by query",
+    "method": "GET",
+    "path": "/api/v1/customer/search",
+    "headers": { "apiToken": "test-key" },
+    "query_params": { "query": "John" },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true,
+      "data": "array"
+    }
+  },
+  {
+    "name": "verify_customer",
+    "description": "Verify a customer by phone number",
+    "method": "POST",
+    "path": "/api/v1/customer/verify",
+    "headers": { "apiToken": "test-key" },
+    "request_body": {
+      "phoneNumber": "255712345678"
+    },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true
+    }
+  }
+]

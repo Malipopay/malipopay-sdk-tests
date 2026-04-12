@@ -1,0 +1,50 @@
+[
+  {
+    "name": "get_banks",
+    "description": "Get list of supported banks",
+    "method": "GET",
+    "path": "/api/v1/banks",
+    "headers": { "apiToken": "test-key" },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true,
+      "data": "array"
+    }
+  },
+  {
+    "name": "get_currencies",
+    "description": "Get list of supported currencies",
+    "method": "GET",
+    "path": "/api/v1/currency",
+    "headers": { "apiToken": "test-key" },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true,
+      "data": "array"
+    }
+  },
+  {
+    "name": "get_countries",
+    "description": "Get list of supported countries",
+    "method": "GET",
+    "path": "/api/v1/countries",
+    "headers": { "apiToken": "test-key" },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true,
+      "data": "array"
+    }
+  },
+  {
+    "name": "get_institutions",
+    "description": "Get list of financial institutions",
+    "method": "GET",
+    "path": "/api/v1/institutions",
+    "headers": { "apiToken": "test-key" },
+    "expected_status": 200,
+    "expected_response": {
+      "success": true,
+      "data": "array"
+    }
+  }
+]
