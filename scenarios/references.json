@@ -3,7 +3,7 @@
     "name": "get_banks",
     "description": "Get list of supported banks",
     "method": "GET",
-    "path": "/api/v1/banks",
+    "path": "/api/v1/standard/banks",
     "headers": { "apiToken": "test-key" },
     "expected_status": 200,
     "expected_response": {
@@ -15,7 +15,7 @@
     "name": "get_currencies",
     "description": "Get list of supported currencies",
     "method": "GET",
-    "path": "/api/v1/currency",
+    "path": "/api/v1/standard/currency",
     "headers": { "apiToken": "test-key" },
     "expected_status": 200,
     "expected_response": {
@@ -27,7 +27,7 @@
     "name": "get_countries",
     "description": "Get list of supported countries",
     "method": "GET",
-    "path": "/api/v1/countries",
+    "path": "/api/v1/standard/countries",
     "headers": { "apiToken": "test-key" },
     "expected_status": 200,
     "expected_response": {
@@ -39,7 +39,7 @@
     "name": "get_institutions",
     "description": "Get list of financial institutions",
     "method": "GET",
-    "path": "/api/v1/institutions",
+    "path": "/api/v1/standard/institutions",
     "headers": { "apiToken": "test-key" },
     "expected_status": 200,
     "expected_response": {

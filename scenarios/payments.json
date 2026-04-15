@@ -103,7 +103,7 @@
     "name": "create_payment_link",
     "description": "Create a payment link",
     "method": "POST",
-    "path": "/api/v1/pay",
+    "path": "/api/v1/payment/link",
     "headers": { "apiToken": "test-key" },
     "request_body": {
       "amount": 25000,
